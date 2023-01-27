@@ -15,7 +15,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "lint:css": "stylelint \"**/*.{css,scss}\"",
+    "lint:js": "eslint . --ext .js,.jsx"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "yarn lint:css --fix"
+    ],
+    "*.{css,scss}": [
+      "yarn lint:js --fix"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +58,8 @@
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "4.x",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
     "stylelint": "13.x",
     "stylelint-config-standard": "21.x",
     "stylelint-csstree-validator": "1.x",
