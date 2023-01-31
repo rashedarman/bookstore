@@ -5,10 +5,9 @@ import Book from './Book';
 
 const BookList = ({ books }) => (
   <ul>
-    {books.map((book) => {
-      const { id, title, author } = book;
-      return <Book key={id} id={id} title={title} author={author} />;
-    })}
+    {books.map((book) => (
+      <Book key={book.id} data={book} />
+    ))}
   </ul>
 );
 

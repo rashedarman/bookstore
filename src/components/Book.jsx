@@ -5,8 +5,9 @@ import { BookType } from '../types';
 
 const Book = (props) => {
   const dispatch = useDispatch();
-
-  const { id, title, author } = props;
+  const {
+    data: { id, title, author },
+  } = props;
 
   return (
     <li>
@@ -22,6 +23,8 @@ const Book = (props) => {
   );
 };
 
-Book.propTypes = BookType;
+Book.propTypes = {
+  data: BookType.isRequired,
+};
 
 export default Book;
