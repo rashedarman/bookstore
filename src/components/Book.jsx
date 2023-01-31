@@ -3,11 +3,14 @@ import React from 'react';
 
 const Book = (props) => {
   const { title, author } = props;
+
   return (
     <li>
-      {title}
-      {'\n'}
-      {author}
+      <p>
+        {title}
+        {' by '}
+        {author}
+      </p>
     </li>
   );
 };
