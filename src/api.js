@@ -9,4 +9,22 @@ const instance = axios.create({
   },
 });
 
+export const getBooks = async () => {
+  const books = await instance.get('/books');
+  return books.data;
+};
+
+export const addBook = async ({
+  id, title, author, category,
+}) => {
+  await instance.post('/books', {
+    item_id: id,
+    title,
+    author,
+    category,
+  });
+};
+
+export const deleteBook = async (bookId) => axios.delete(`/books/${bookId}`);
+
 export default instance;
