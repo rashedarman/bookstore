@@ -14,16 +14,16 @@ export const getBooks = async () => {
   return Object.entries(books.data).map(([id, book]) => {
     const [{ title, author, category }] = book;
     return {
-      id, title, author, category,
+      id,
+      title,
+      author,
+      category,
     };
   });
 };
 
 export const addBook = async ({
-  id,
-  title,
-  author,
-  category = 'Uncategorized',
+  id, title, author, category,
 }) => {
   await instance.post('/books', {
     item_id: id,

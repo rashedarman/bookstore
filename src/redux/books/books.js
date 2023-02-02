@@ -1,44 +1,49 @@
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from '../../api';
 
 const FETCH = 'bookstore/books/FETCH';
 const ADD = 'bookstore/books/ADD';
 const DELETE = 'bookstore/books/DELETE';
 
-const initialStates = {
+export const fetchBooks = createAsyncThunk(FETCH, async () => {
+  const books = await api.getBooks();
+  return books;
+});
+
+export const addBook = createAsyncThunk(ADD, async (book) => {
+  await api.addBook(book);
+  return book;
+});
+
+export const deleteBook = createAsyncThunk(DELETE, async (id) => {
+  await api.deleteBook(id);
+  return id;
+});
+
+const initialState = {
   books: [],
 };
 
-const reducer = (state = initialStates, action) => {
-  switch (action.type) {
-    case FETCH: {
-      return { books: action.payload };
-    }
-    case ADD:
-      return {
-        books: [...state.books, action.payload],
-      };
-    case DELETE:
-      return {
-        books: state.books.filter((book) => book.id !== action.payload),
-      };
-    default:
-      return state;
-  }
-};
+const booksSlice = createSlice({
+  name: 'bookstore/books',
+  initialState,
+  extraReducers: {
+    [fetchBooks.fulfilled]: (state, action) => {
+      const currentState = state;
+      currentState.books = action.payload;
+    },
+    [addBook.fulfilled]: (state, action) => {
+      const currentState = state;
+      const book = { ...action.payload, category: 'TBD' };
+      currentState.books = [...state.books, book];
+    },
+    [deleteBook.fulfilled]: (state, action) => {
+      const currentState = state;
+      currentState.books = state.books.filter(
+        (book) => book.id !== action.payload,
+      );
+    },
+  },
+});
 
-export const fetchBooks = () => async (dispatch) => {
-  const books = await api.getBooks();
-  dispatch({ type: FETCH, payload: books });
-};
-
-export const addBook = (book) => async (dispatch) => {
-  await api.addBook(book);
-  dispatch({ type: ADD, payload: book });
-};
-
-export const deleteBook = (id) => async (dispatch) => {
-  await api.deleteBook(id);
-  dispatch({ type: DELETE, payload: id });
-};
-
-export default reducer;
+export default booksSlice.reducer;
