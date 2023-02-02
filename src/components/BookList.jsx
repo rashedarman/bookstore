@@ -3,8 +3,10 @@ import React from 'react';
 import { BookType } from '../types';
 import Book from './Book';
 
+import './BookList.scss';
+
 const BookList = ({ books }) => (
-  <ul>
+  <ul className="books">
     {books.map((book) => (
       <Book key={book.id} data={book} />
     ))}

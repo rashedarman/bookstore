@@ -1,0 +1,37 @@
+@use '../variables' as *;
+
+.form-title {
+  color: #888;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.18px;
+}
+
+.add-form {
+  display: flex;
+  gap: 32px;
+  margin-top: 20px;
+
+  & > input[type='text'] {
+    width: 50%;
+  }
+}
+
+.input {
+  font-size: 1rem;
+  letter-spacing: -0.15px;
+  color: $color-dark;
+  background-color: white;
+  padding: 12px;
+  border: solid 1px $color-light-gray;
+  border-radius: 4px;
+
+  &::placeholder {
+    color: $color-gray;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $color-primary;
+  }
+}

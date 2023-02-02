@@ -1,0 +1,40 @@
+@use '../variables' as *;
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 24px 4%;
+  background-color: white;
+  border-bottom: 1px solid $color-light-gray;
+
+  & > a {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: $color-primary;
+  }
+
+  & > ul {
+    display: flex;
+    flex-grow: 1;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+
+    a {
+      opacity: 0.5;
+      font-size: 0.813rem;
+      color: $color-dark;
+      letter-spacing: 1.9px;
+
+      &[aria-current='page'] {
+        opacity: 1;
+        color: $color-dark;
+      }
+    }
+  }
+
+  .icon-button {
+    color: $color-primary;
+  }
+}

@@ -4,6 +4,8 @@ import BookForm from '../components/BookForm';
 import BookList from '../components/BookList';
 import { fetchBooks } from '../redux/books/books';
 
+import './Books.scss';
+
 const BooksPage = () => {
   const dispatch = useDispatch();
 
@@ -13,11 +15,11 @@ const BooksPage = () => {
 
   const { books } = useSelector((state) => state.books);
   return (
-    <>
+    <div className="container">
       <BookList books={books} />
-      <br />
+      <div className="horizontal-divider" />
       <BookForm />
-    </>
+    </div>
   );
 };
 
