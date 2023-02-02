@@ -73,25 +73,70 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
+- Node.js installed on your local machine
+- npm or yarn package manager
+
 ### Setup
 
 Clone this repository to your desired folder:
+
+```sh
+  git clone git@github.com:rashedarman/bookstore.git
+
+  cd bookstore
+```
 
 ### Install
 
 Install this project with:
 
+```sh
+  yarn install
+```
+
+or with npm:
+
+```sh
+  npm install
+```
+
 ### Usage
 
 To run the project, execute the following command:
+
+```sh
+  yarn start
+```
+
+or with npm:
+
+```sh
+  npm start
+```
+
+This should start the development server and open the application in your default web browser.
 
 ### Run tests
 
 To run tests, run the following command:
 
+```sh
+  yarn test
+```
+
+or with npm:
+
+```sh
+  npm test
+```
+
 ### Deployment
 
 You can deploy this project using:
+
+- Vercel
+- Netlify
+- Railway
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

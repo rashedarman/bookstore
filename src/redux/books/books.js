@@ -1,43 +1,49 @@
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import * as api from '../../api';
+
+const FETCH = 'bookstore/books/FETCH';
 const ADD = 'bookstore/books/ADD';
-const REMOVE = 'bookstore/books/REMOVE';
+const DELETE = 'bookstore/books/DELETE';
 
-const initialStates = {
-  books: [
-    {
-      id: 1,
-      title: "The Hitchhiker's Guide to the Galaxy",
-      author: 'Douglas Adams',
-    },
-    {
-      id: 2,
-      title: "Ender's Game",
-      author: 'Orson Scott Card',
-    },
-    {
-      id: 3,
-      title: 'The War of the Worlds',
-      author: 'H.G. Wells',
-    },
-  ],
+export const fetchBooks = createAsyncThunk(FETCH, async () => {
+  const books = await api.getBooks();
+  return books;
+});
+
+export const addBook = createAsyncThunk(ADD, async (book) => {
+  await api.addBook(book);
+  return book;
+});
+
+export const deleteBook = createAsyncThunk(DELETE, async (id) => {
+  await api.deleteBook(id);
+  return id;
+});
+
+const initialState = {
+  books: [],
 };
 
-const reducer = (state = initialStates, action) => {
-  switch (action.type) {
-    case ADD:
-      return {
-        books: [...state.books, action.payload],
-      };
-    case REMOVE:
-      return {
-        books: state.books.filter((book) => book.id !== action.payload),
-      };
-    default:
-      return state;
-  }
-};
+const booksSlice = createSlice({
+  name: 'bookstore/books',
+  initialState,
+  extraReducers: {
+    [fetchBooks.fulfilled]: (state, action) => {
+      const currentState = state;
+      currentState.books = action.payload;
+    },
+    [addBook.fulfilled]: (state, action) => {
+      const currentState = state;
+      const book = { ...action.payload, category: 'TBD' };
+      currentState.books = [...state.books, book];
+    },
+    [deleteBook.fulfilled]: (state, action) => {
+      const currentState = state;
+      currentState.books = state.books.filter(
+        (book) => book.id !== action.payload,
+      );
+    },
+  },
+});
 
-export const addBook = (book) => ({ type: ADD, payload: book });
-
-export const removeBook = (id) => ({ type: REMOVE, payload: id });
-
-export default reducer;
+export default booksSlice.reducer;
