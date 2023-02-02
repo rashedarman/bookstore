@@ -15,10 +15,11 @@ const Book = (props) => {
         {title}
         {' by '}
         {author}
+        &nbsp;
+        <button type="button" onClick={() => dispatch(deleteBook(id))}>
+          delete
+        </button>
       </p>
-      <button type="button" onClick={() => dispatch(deleteBook(id))}>
-        delete
-      </button>
     </li>
   );
 };
