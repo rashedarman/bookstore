@@ -1,33 +1,23 @@
+import * as api from '../../api';
+
+const FETCH = 'bookstore/books/FETCH';
 const ADD = 'bookstore/books/ADD';
-const REMOVE = 'bookstore/books/REMOVE';
+const DELETE = 'bookstore/books/DELETE';
 
 const initialStates = {
-  books: [
-    {
-      id: 1,
-      title: "The Hitchhiker's Guide to the Galaxy",
-      author: 'Douglas Adams',
-    },
-    {
-      id: 2,
-      title: "Ender's Game",
-      author: 'Orson Scott Card',
-    },
-    {
-      id: 3,
-      title: 'The War of the Worlds',
-      author: 'H.G. Wells',
-    },
-  ],
+  books: [],
 };
 
 const reducer = (state = initialStates, action) => {
   switch (action.type) {
+    case FETCH: {
+      return { books: action.payload };
+    }
     case ADD:
       return {
         books: [...state.books, action.payload],
       };
-    case REMOVE:
+    case DELETE:
       return {
         books: state.books.filter((book) => book.id !== action.payload),
       };
@@ -36,8 +26,19 @@ const reducer = (state = initialStates, action) => {
   }
 };
 
-export const addBook = (book) => ({ type: ADD, payload: book });
+export const fetchBooks = () => async (dispatch) => {
+  const books = await api.getBooks();
+  dispatch({ type: FETCH, payload: books });
+};
 
-export const removeBook = (id) => ({ type: REMOVE, payload: id });
+export const addBook = (book) => async (dispatch) => {
+  await api.addBook(book);
+  dispatch({ type: ADD, payload: book });
+};
+
+export const deleteBook = (id) => async (dispatch) => {
+  await api.deleteBook(id);
+  dispatch({ type: DELETE, payload: id });
+};
 
 export default reducer;
