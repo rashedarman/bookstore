@@ -11,11 +11,19 @@ const instance = axios.create({
 
 export const getBooks = async () => {
   const books = await instance.get('/books');
-  return books.data;
+  return Object.entries(books.data).map(([id, book]) => {
+    const [{ title, author, category }] = book;
+    return {
+      id, title, author, category,
+    };
+  });
 };
 
 export const addBook = async ({
-  id, title, author, category,
+  id,
+  title,
+  author,
+  category = 'Uncategorized',
 }) => {
   await instance.post('/books', {
     item_id: id,
@@ -25,6 +33,8 @@ export const addBook = async ({
   });
 };
 
-export const deleteBook = async (bookId) => axios.delete(`/books/${bookId}`);
+export const deleteBook = async (id) => {
+  await instance.delete(`/books/${id}`);
+};
 
 export default instance;
