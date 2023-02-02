@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 export const BookType = PropTypes.shape({
-  id: PropTypes.number.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
 });
