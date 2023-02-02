@@ -1,0 +1,11 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-robotoSlab: 'Roboto Slab', serif;
+
+$color-light: #fafafa;
+$color-light-smoke: #f5f6fa;
+$color-light-gray: #e8e8e8;
+
+@mixin button-font {
+  font-family: $font-robotoSlab;
+  font-weight: 300;
+}

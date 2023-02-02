@@ -3,6 +3,8 @@ import Nav from './components/Nav';
 import BooksPage from './pages/Books';
 import CategoriesPage from './pages/Categories';
 
+import './App.scss';
+
 function App() {
   return (
     <BrowserRouter>
