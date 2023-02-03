@@ -8,12 +8,23 @@ const Categories = () => {
   const categories = useSelector((state) => state.categories);
 
   return (
-    <>
-      <p>{categories.status}</p>
-      <button type="button" onClick={() => dispatch(checkStatus())}>
+    <div
+      className="container"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <button
+        type="button"
+        className="primary-button"
+        onClick={() => dispatch(checkStatus())}
+      >
         Check status
       </button>
-    </>
+      <h2>{categories.status}</h2>
+    </div>
   );
 };
 
