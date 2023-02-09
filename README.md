@@ -32,6 +32,8 @@
 
 Bookstore is a sleek and modern designed single-page application. It allows users to browse and create books and categories, while also tracking their reading progress. Built with React and Redux.
 
+![App Screenshot](./bookstore.png)
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -59,7 +61,7 @@ Bookstore is a sleek and modern designed single-page application. It allows user
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](#)
+- [Live Demo Link](https://bookstore-beryl.vercel.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
