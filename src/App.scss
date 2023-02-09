@@ -1,0 +1,65 @@
+@use './variables' as *;
+@use './reset.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@300;400;700&display=swap');
+
+body {
+  font-family: $font-montserrat;
+  padding: 4%;
+  background-color: #f5f6fa;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root {
+  padding-bottom: 8%;
+  border-radius: 4px;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
+  background-color: $color-light;
+}
+
+.container {
+  padding: 4%;
+}
+
+.icon-button {
+  width: 2.813rem;
+  height: 2.813rem;
+  padding: 0;
+  background-color: white;
+  border: solid 1px $color-light-gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.primary-button {
+  @include button-font;
+
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: $color-primary;
+  padding: 8px 24px;
+}
+
+.primary-button-big {
+  @include button-font;
+
+  width: 20%;
+  padding: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 3px;
+  background-color: $color-primary;
+}
+
+.button-outline {
+  @include button-font;
+
+  font-size: 0.875rem;
+  padding: 0;
+  color: $color-primary-50;
+  background-color: transparent;
+}

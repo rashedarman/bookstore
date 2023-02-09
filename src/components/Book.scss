@@ -1,0 +1,80 @@
+@use '../variables' as *;
+
+.book {
+  padding: 2rem;
+  border: 1px solid $color-light-gray;
+  border-radius: 4px;
+  background-color: white;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &-category {
+    color: $color-dark;
+    opacity: 0.5;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  &-title {
+    color: $color-dark;
+    margin-top: 0.188rem;
+    font-family: $font-robotoSlab;
+    font-weight: 700;
+    font-size: 1.375rem;
+    letter-spacing: -0.2px;
+  }
+
+  &-author {
+    font-family: $font-robotoSlab;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: $color-primary-50;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 1.313rem;
+}
+
+.current-chapter-container {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  gap: 20px;
+  width: 14rem;
+}
+
+.current-chapter-label {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  font-size: 0.813rem;
+  color: $color-dark;
+  opacity: 0.5;
+}
+
+.current-chapter {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+  margin-top: 0.438rem;
+  font-size: 1rem;
+  color: $color-dark;
+  letter-spacing: -0.4px;
+}
+
+.vertical-divider {
+  width: 0.125rem;
+  height: 1.5rem;
+  background-color: $color-light-gray;
+  margin: 0 1rem;
+}
